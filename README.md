@@ -1,10 +1,8 @@
-# glfw-skeleton [![Build Status](https://travis-ci.org/andystanton/glfw-skeleton.png?branch=master)](https://travis-ci.org/andystanton/glfw-skeleton)
+# Game of Life (C++11)
 
-A skeleton C++11 OpenGL 3.2 app that uses the [GLFW](http://www.glfw.org), [GLEW](http://glew.sourceforge.net/) and [GLM](http://glm.g-truc.net/) libraries and builds with [CMake](http://www.cmake.org/). [Bandit](http://banditcpp.org/) is used for unit testing.
+An implementation of Conway's Game of Life. It is a C++11 OpenGL 3.2 app that uses the [GLFW](http://www.glfw.org), [GLEW](http://glew.sourceforge.net/) and [GLM](http://glm.g-truc.net/) libraries and builds with [CMake](http://www.cmake.org/). [Bandit](http://banditcpp.org/) is used for unit testing.
 
 All libraries are included as git submodules and built from source with the application to ensure portability.
-
-![](http://andystanton.github.io/glfw-skeleton/images/content/3.0.1/glfw-skeleton.png)
 
 ## Requirements
 
@@ -17,9 +15,9 @@ All libraries are included as git submodules and built from source with the appl
 ## Quick Start
 
 ```sh
-git clone https://github.com/andystanton/glfw-skeleton.git --recursive
+git clone https://github.com/andystanton/game-of-life-cpp.git --recursive
 
-cd glfw-skeleton
+cd game-of-life-cpp
 
 rake default start
 ```
