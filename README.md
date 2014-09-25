@@ -7,7 +7,7 @@ All libraries are included as git submodules and built from source with the appl
 ## Requirements
 
 * A C++11 compiler
-* CMake >= 2.8.8
+* CMake >= 2.8.12
 * Make >= 3.81
 * Rake >= 10.3
 * OpenGL >= 3.2
