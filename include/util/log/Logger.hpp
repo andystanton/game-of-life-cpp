@@ -35,7 +35,7 @@ private:
     bool noColour;
 
     static const regex colourPattern;
-    static const string message_ok;
-    static const string message_fail;
+    static const string messageOk;
+    static const string messageFail;
 };
 

@@ -1,20 +1,18 @@
 #pragma once
 
-#include <vector>
-#include <utility>
+#include <algorithm>
 
-using std::vector;
-using std::pair;
+#include "GameOfLifeInterface.hpp"
 
 class GameOfLife
+    : public GameOfLifeInterface
 {
 public:
     GameOfLife();
     ~GameOfLife();
     const vector<pair<int, int>> & getCells();
     void tick();
-    void tickSpecial(unsigned int, unsigned int, bool);
-    void addLife(unsigned int x, unsigned int y);
+    void addLife(int x, int y);
 private:
     vector<pair<int, int>> cells;
 };
