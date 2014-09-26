@@ -12,5 +12,6 @@ public:
     virtual const vector<pair<int, int>> & getCells() = 0;
     virtual void addLife(int x, int y) = 0;
     virtual void tick() = 0;
+    virtual bool isCellAlive(int x, int y) = 0;
     virtual ~GameOfLifeInterface() {};
 };
