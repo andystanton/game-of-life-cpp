@@ -29,7 +29,7 @@ private:
     string appName;
     unsigned int width;
     unsigned int height;
-    const vector<pair<int, int>> & cells;
+    const vector<pair<int, int>> & squares;
     shared_ptr<Logger> logger;
 
     GLFWwindow * window;
@@ -48,6 +48,7 @@ private:
 
     static void (* mousePositionCallback)(unsigned int, unsigned int);
     static void (* mouseButtonCallback)(unsigned int, unsigned int);
+    static void (* keyboardCallback)(int ascii);
 
     static unsigned int mousePositionX, mousePositionY;
     static unsigned int squareSize;
@@ -55,25 +56,26 @@ private:
     void drawSquares();
 
     void initGL();
+    void setup();
+    void teardown();
 
 public:
+
     UI(const string & appName,
        unsigned int width,
        unsigned int height,
        unsigned int squareSize, const vector<pair<int, int>> & cells);
-
     ~UI();
 
-    void setup();
     void draw();
-    void teardown();
-
     bool isActive();
-
-    static void mousePositionCallbackWrapper(GLFWwindow * window, double x, double y);
-    static void mouseButtonCallbackWrapper(GLFWwindow * window, int button, int action, int mods);
 
     void registerMousePositionCallback(void (*)(unsigned int x, unsigned int y));
     void registerMouseButtonCallback(void (*)(unsigned int x, unsigned int y));
+    void registerKeyboardCallback(void (*)(int ascii));
+
+    static void mousePositionCallbackWrapper(GLFWwindow * window, double x, double y);
+    static void mouseButtonCallbackWrapper(GLFWwindow * window, int button, int action, int mods);
+    static void keyboardCallbackWrapper(GLFWwindow * window, int key, int scancode, int action, int mods);
 };
 

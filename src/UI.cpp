@@ -2,6 +2,7 @@
 
 void (* UI::mousePositionCallback)(unsigned int, unsigned int);
 void (* UI::mouseButtonCallback)(unsigned int, unsigned int);
+void (* UI::keyboardCallback)(int);
 
 unsigned int UI::mousePositionX = 0;
 unsigned int UI::mousePositionY = 0;
@@ -15,14 +16,17 @@ UI::UI(const string & appName,
         : appName(appName)
         , width(width)
         , height(height)
-        , cells(cells)
+        , squares(cells)
 {
     this->logger = LoggerFactory::getLogger("UI");
     UI::squareSize = squareSize;
+
+    setup();
 }
 
 UI::~UI()
 {
+    teardown();
 }
 
 void UI::initGL()
@@ -94,6 +98,7 @@ void UI::initGL()
 
     glfwSetCursorPosCallback(window, & mousePositionCallbackWrapper);
     glfwSetMouseButtonCallback(window, & mouseButtonCallbackWrapper);
+    glfwSetKeyCallback(window, & keyboardCallbackWrapper);
 }
 
 void UI::drawSquares()
@@ -111,15 +116,15 @@ void UI::drawSquares()
     glBindBuffer(GL_ARRAY_BUFFER, squaresVertexbuffer);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<void *>(0));
 
-    unsigned long arraySize = ONE_SQUARE_VERTEX_COMPONENT_COUNT * cells.size();
-    GLfloat squaresV[arraySize];
-    for (unsigned int i = 0; i < cells.size(); ++i)
+    GLfloat squaresV[ONE_SQUARE_VERTEX_COMPONENT_COUNT * squares.size()];
+
+    for (unsigned int i = 0; i < squares.size(); ++i)
     {
         int base = i * ONE_SQUARE_VERTEX_COMPONENT_COUNT;
         for (int j = 0; j < ONE_SQUARE_VERTEX_COMPONENT_COUNT; j += 2)
         {
-            squaresV[base + j + 0] = std::get<0>(cells[i]) + SQUARE_VERTICES[j + 0];
-            squaresV[base + j + 1] = std::get<1>(cells[i]) + SQUARE_VERTICES[j + 1];
+            squaresV[base + j + 0] = squares[i].first + SQUARE_VERTICES[j + 0];
+            squaresV[base + j + 1] = squares[i].second + SQUARE_VERTICES[j + 1];
         }
     }
 
@@ -242,6 +247,14 @@ void UI::mouseButtonCallbackWrapper(GLFWwindow * window, int button, int action,
     }
 }
 
+void UI::keyboardCallbackWrapper(GLFWwindow * window, int key, int scancode, int action, int mods)
+{
+    if (keyboardCallback != nullptr && action == GLFW_RELEASE)
+    {
+        keyboardCallback(key);
+    }
+}
+
 void UI::registerMousePositionCallback(void (* mousePositionCallback)(unsigned int, unsigned int))
 {
     UI::mousePositionCallback = mousePositionCallback;
@@ -250,6 +263,11 @@ void UI::registerMousePositionCallback(void (* mousePositionCallback)(unsigned i
 void UI::registerMouseButtonCallback(void (* mouseButtonCallback)(unsigned int, unsigned int))
 {
     UI::mouseButtonCallback = mouseButtonCallback;
+}
+
+void UI::registerKeyboardCallback(void (* keyboardCallback)(int))
+{
+    UI::keyboardCallback = keyboardCallback;
 }
 
 pair<unsigned int, unsigned int> UI::adjustPosition(GLFWwindow * window, double x, double y)
