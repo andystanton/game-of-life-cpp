@@ -1,12 +1,21 @@
 # Game of Life (C++11)
 
-An implementation of Conway's Game of Life. It is a C++11 OpenGL 3.2 app that uses the [GLFW](http://www.glfw.org), [GLEW](http://glew.sourceforge.net/) and [GLM](http://glm.g-truc.net/) libraries and builds with [CMake](http://www.cmake.org/). [Bandit](http://banditcpp.org/) is used for unit testing.
+A test driven (sub-optimal) implementation of Conway's Game of Life. It is a C++11 OpenGL 3.2 app that uses the [GLFW](http://www.glfw.org), [GLEW](http://glew.sourceforge.net/) and [GLM](http://glm.g-truc.net/) libraries and builds with [CMake](http://www.cmake.org/). [Bandit](http://banditcpp.org/) is used for unit testing.
 
 All libraries are included as git submodules and built from source with the application to ensure portability.
 
+## Game of Life description
+
+The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+
+1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+2. Any live cell with two or three live neighbours lives on to the next generation.
+3. Any live cell with more than three live neighbours dies, as if by overcrowding.
+4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
 ## Requirements
 
-* A C++11 compiler
+* gcc 4.9.1 or clang 3.4
 * CMake >= 2.8.12
 * Make >= 3.81
 * Rake >= 10.3
