@@ -6,6 +6,8 @@ All libraries are included as git submodules and built from source with the appl
 
 ![](http://andystanton.github.io/game-of-life-cpp/gameoflife.png)
 
+A Youtube video of the implementation working can be found [here](http://youtu.be/EQOfD_yJMBU).
+
 ## Rules
 
 The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
