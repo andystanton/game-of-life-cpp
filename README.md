@@ -4,6 +4,8 @@ A test driven (sub-optimal) implementation of Conway's Game of Life. It is a C++
 
 All libraries are included as git submodules and built from source with the application to ensure portability.
 
+![](http://andystanton.github.io/game-of-life-cpp/gameoflife.png)
+
 ## Rules
 
 The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
