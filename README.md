@@ -1,4 +1,4 @@
-# Game of Life (C++11) [![Build Status](http://drone.cyniq.com/github.com/andystanton/game-of-life-cpp/status.svg?branch=master)](http://drone.cyniq.com/github.com/andystanton/game-of-life-cpp)
+# Game of Life (C++11) [![Build Status](http://drone.cyniq.com/api/badge/github.com/andystanton/game-of-life-cpp/status.svg?branch=master)](http://drone.cyniq.com/github.com/andystanton/game-of-life-cpp)
 
 A test driven (sub-optimal) implementation of Conway's Game of Life. It is a C++11 OpenGL 3.2 app that uses the [GLFW](http://www.glfw.org), [GLEW](http://glew.sourceforge.net/) and [GLM](http://glm.g-truc.net/) libraries and builds with [CMake](http://www.cmake.org/). [Bandit](http://banditcpp.org/) is used for unit testing.
 
